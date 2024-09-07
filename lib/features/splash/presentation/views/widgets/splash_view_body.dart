@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kotobia/constants.dart';
 import 'package:kotobia/core/utlis/assets.dart';
+import 'package:kotobia/features/home/presentation/views/home_view.dart';
 import 'package:kotobia/features/splash/presentation/views/widgets/sliding_animation.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -16,25 +19,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late Animation<Offset> slidingAnimation2;
   late Animation<Offset> slidingAnimation3;
   late Animation<Offset> slidingAnimation4;
+
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(-2, 0), end: const Offset(0, 0))
-            .animate(animationController);
-    slidingAnimation2 =
-        Tween<Offset>(begin: const Offset(0, 2), end: const Offset(0, 0))
-            .animate(animationController);
-    slidingAnimation3 =
-        Tween<Offset>(begin: const Offset(2, 0), end: const Offset(0, 0))
-            .animate(animationController);
-    slidingAnimation4 =
-        Tween<Offset>(begin: const Offset(0, -2), end: const Offset(0, 0))
-            .animate(animationController);
-    animationController.forward();
+    anitSlidingAnimation();
+    navigateToHome();
   }
 
   @override
@@ -71,5 +61,31 @@ class _SplashViewBodyState extends State<SplashViewBody>
         )
       ],
     );
+  }
+
+  void anitSlidingAnimation() {
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(-2, 0), end: const Offset(0, 0))
+            .animate(animationController);
+    slidingAnimation2 =
+        Tween<Offset>(begin: const Offset(0, 2), end: const Offset(0, 0))
+            .animate(animationController);
+    slidingAnimation3 =
+        Tween<Offset>(begin: const Offset(2, 0), end: const Offset(0, 0))
+            .animate(animationController);
+    slidingAnimation4 =
+        Tween<Offset>(begin: const Offset(0, -2), end: const Offset(0, 0))
+            .animate(animationController);
+    animationController.forward();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() => const HomeView(),
+          transition: Transition.fade, duration: kTransitionDuration);
+    });
   }
 }
