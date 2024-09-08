@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+      padding: const EdgeInsets.only(top: 20, left: 18, right: 18, bottom: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -17,9 +17,7 @@ class CustomAppBar extends StatelessWidget {
             height: 80,
           ),
           IconButton(
-            onPressed: () {
-              print('fuck you');
-            },
+            onPressed: () {},
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 24,
