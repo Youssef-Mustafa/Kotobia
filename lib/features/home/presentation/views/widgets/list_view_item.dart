@@ -6,14 +6,17 @@ class ListViweItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.7 / 4,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          image: const DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage(AssetsData.testBookImage),
+    return Padding(
+      padding: const EdgeInsets.only(right: 10.0),
+      child: AspectRatio(
+        aspectRatio: 2.7 / 4,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            image: const DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(AssetsData.testBookImage),
+            ),
           ),
         ),
       ),
