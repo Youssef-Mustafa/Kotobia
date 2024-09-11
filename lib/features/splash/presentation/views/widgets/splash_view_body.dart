@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kotobia/constants.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kotobia/core/utlis/app_router.dart';
 import 'package:kotobia/core/utlis/assets.dart';
-import 'package:kotobia/features/home/presentation/views/home_view.dart';
 import 'package:kotobia/features/splash/presentation/views/widgets/sliding_animation.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -83,9 +82,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.to(() => const HomeView(),
-          transition: Transition.fade, duration: kTransitionDuration);
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        // Get.to(() => const HomeView(),
+        //     transition: Transition.fade, duration: kTransitionDuration);
+        GoRouter.of(context).push(AppRouter.kHomeView);
+      },
+    );
   }
 }
