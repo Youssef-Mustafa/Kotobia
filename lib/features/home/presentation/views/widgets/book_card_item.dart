@@ -5,6 +5,7 @@ import 'package:kotobia/constants.dart';
 import 'package:kotobia/core/utlis/app_router.dart';
 import 'package:kotobia/core/utlis/style.dart';
 import 'package:kotobia/features/home/data/models/book_model/book_model.dart';
+import 'package:kotobia/features/home/presentation/views/widgets/book_reaction.dart';
 import 'package:kotobia/features/home/presentation/views/widgets/list_view_item.dart';
 
 class BookCardItem extends StatelessWidget {
@@ -16,7 +17,10 @@ class BookCardItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.kDetailsView);
+          GoRouter.of(context).push(
+            AppRouter.kDetailsView,
+            extra: bookModel,
+          );
         },
         child: SizedBox(
           height: 130,
@@ -57,25 +61,8 @@ class BookCardItem extends StatelessWidget {
                         height: 1,
                       ),
                     ),
-                    Row(
+                    const BookReaction(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {},
-                          icon: const Icon(
-                            FontAwesomeIcons.solidHeart,
-                            color: Colors.red,
-                          ),
-                        ),
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.download,
-                          ),
-                        ),
-                      ],
                     )
                   ],
                 ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kotobia/features/home/presentation/views/widgets/book_card_item.dart';
 
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});

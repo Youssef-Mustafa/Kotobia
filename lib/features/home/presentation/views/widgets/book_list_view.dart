@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kotobia/core/utlis/app_router.dart';
 import 'package:kotobia/core/widgets/custom_error_widget.dart';
 import 'package:kotobia/core/widgets/custom_loading_indicator.dart';
 import 'package:kotobia/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
@@ -20,10 +22,16 @@ class BookListView extends StatelessWidget {
                 itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return CustomBookImage(
-                    imageUrl: state
-                            .books[index].volumeInfo.imageLinks?.thumbnail ??
-                        'https://media.allauthor.com/images/quotes/img/michel-de-montaigne-quote-the-value-of-life-lies-not-in-the.jpg',
+                  return GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kDetailsView,
+                          extra: state.books[index]);
+                    },
+                    child: CustomBookImage(
+                      imageUrl: state
+                              .books[index].volumeInfo.imageLinks?.thumbnail ??
+                          'https://media.allauthor.com/images/quotes/img/michel-de-montaigne-quote-the-value-of-life-lies-not-in-the.jpg',
+                    ),
                   );
                 }),
           );
