@@ -29,7 +29,17 @@ class BookCardListView extends StatelessWidget {
         } else if (state is NewestBooksFailure) {
           return CustomErrorWidget(errorMessage: state.errorMessage);
         } else {
-          return const CustomLoadingIndicator();
+          return ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.zero,
+            itemBuilder: (context, index) {
+              return const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: VerticalListLoading(),
+              );
+            },
+          );
+          ;
         }
       },
     );

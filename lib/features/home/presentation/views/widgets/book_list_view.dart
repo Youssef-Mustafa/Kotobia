@@ -21,8 +21,9 @@ class BookListView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return CustomBookImage(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                    imageUrl: state
+                            .books[index].volumeInfo.imageLinks?.thumbnail ??
+                        'https://media.allauthor.com/images/quotes/img/michel-de-montaigne-quote-the-value-of-life-lies-not-in-the.jpg',
                   );
                 }),
           );
@@ -31,7 +32,15 @@ class BookListView extends StatelessWidget {
             errorMessage: state.errorMessage,
           );
         } else {
-          return const CustomLoadingIndicator();
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return const CustomBookImageShimmer();
+                }),
+          );
         }
       },
     );
