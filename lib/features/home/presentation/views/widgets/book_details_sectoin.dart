@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kotobia/constants.dart';
 import 'package:kotobia/core/utlis/style.dart';
 import 'package:kotobia/features/home/presentation/views/widgets/book_action.dart';
-import 'package:kotobia/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:kotobia/features/home/presentation/views/widgets/list_view_item.dart';
 
 class BookDetailsSection extends StatelessWidget {
@@ -45,9 +44,10 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 15,
         ),
-        const BookRating(
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
+        // const BookRating(
+        //   rating: 'h',
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        // ),
         const SizedBox(
           height: 30,
         ),

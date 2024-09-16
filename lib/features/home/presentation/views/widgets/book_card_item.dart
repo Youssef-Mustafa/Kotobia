@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kotobia/constants.dart';
 import 'package:kotobia/core/utlis/app_router.dart';
-import 'package:kotobia/core/utlis/assets.dart';
 import 'package:kotobia/core/utlis/style.dart';
-import 'package:kotobia/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:kotobia/features/home/data/models/book_model/book_model.dart';
+import 'package:kotobia/features/home/presentation/views/widgets/list_view_item.dart';
 
 class BookCardItem extends StatelessWidget {
-  const BookCardItem({super.key});
-
+  const BookCardItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,17 +23,8 @@ class BookCardItem extends StatelessWidget {
           height: 130,
           child: Row(
             children: [
-              AspectRatio(
-                aspectRatio: 2.5 / 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: const DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(AssetsData.testBookImage),
-                    ),
-                  ),
-                ),
+              CustomBookImage(
+                imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
               ),
               const SizedBox(
                 width: 30,
@@ -44,7 +36,7 @@ class BookCardItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Text(
-                        'Harry Potter and the Goblet of Fire',
+                        bookModel.volumeInfo.title!,
                         style: Styles.textStyle20.copyWith(
                           fontFamily: kSecondaryFontFamily,
                         ),
@@ -55,22 +47,33 @@ class BookCardItem extends StatelessWidget {
                     const SizedBox(
                       height: 3,
                     ),
-                    const Text(
-                      'J.K Rowling',
+                    Text(
+                      bookModel.volumeInfo.authors![0],
                       style: Styles.textStyle14,
                     ),
-                    const SizedBox(
-                      height: 3,
+                    const Expanded(
+                      child: SizedBox(
+                        height: 1,
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          '19.99 \$',
-                          style: Styles.textStyle20
-                              .copyWith(fontWeight: FontWeight.bold),
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: const Icon(
+                            FontAwesomeIcons.solidHeart,
+                            color: Colors.red,
+                          ),
                         ),
-                        const BookRating(),
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.download,
+                          ),
+                        ),
                       ],
                     )
                   ],
