@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({super.key});
-
+  const CustomSearchTextField({super.key, required this.onChanged});
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,6 +18,7 @@ class CustomSearchTextField extends StatelessWidget {
             icon: const Icon(Icons.arrow_back)),
         Expanded(
           child: TextField(
+            onChanged: onChanged,
             decoration: InputDecoration(
               enabledBorder: buildOutlineInputBorder(),
               focusedBorder: buildOutlineInputBorder(),
