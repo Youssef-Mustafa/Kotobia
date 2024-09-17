@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kotobia/constants.dart';
 import 'package:kotobia/core/utlis/style.dart';
 import 'package:kotobia/features/home/data/models/book_model/book_model.dart';

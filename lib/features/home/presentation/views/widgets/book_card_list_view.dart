@@ -39,7 +39,6 @@ class BookCardListView extends StatelessWidget {
               );
             },
           );
-          ;
         }
       },
     );
